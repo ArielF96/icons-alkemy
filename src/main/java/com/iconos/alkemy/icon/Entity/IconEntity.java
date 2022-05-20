@@ -6,12 +6,16 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "icon")
 @Getter
 @Setter
+@SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
+@Where(clause = "deleted=false")
 public class IconEntity {
 
     @Id
@@ -30,7 +34,7 @@ public class IconEntity {
 
     private String historia;
 
-//    private boolean deleted = Boolean.FALSE;
+    private boolean deleted = Boolean.FALSE;
 //
 //    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "pais_id")

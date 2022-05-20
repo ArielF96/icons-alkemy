@@ -5,11 +5,15 @@ import java.util.Set;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "pais")
 @Getter
 @Setter
+@SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
+@Where(clause = "deleted=false")
 public class PaisEntity {
 
     @Id
@@ -19,6 +23,8 @@ public class PaisEntity {
     private String imagen;
 
     private String denominacion;
+
+    private boolean deleted = Boolean.FALSE;
 
     @Column(name = "cant_habitantes")
     private Long cantidadHabitantes;
