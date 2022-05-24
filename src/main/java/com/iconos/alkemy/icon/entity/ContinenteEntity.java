@@ -9,7 +9,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @Data
 @Table(name = "continente")
-@SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
+@SQLDelete(sql = "UPDATE continente SET deleted = true WHERE id=?" )
 @Where(clause = "deleted=false")
 public class ContinenteEntity {
 

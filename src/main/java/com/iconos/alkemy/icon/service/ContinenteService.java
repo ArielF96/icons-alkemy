@@ -7,7 +7,9 @@ import com.iconos.alkemy.icon.repo.ContinenteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContinenteService {
@@ -23,6 +25,25 @@ public class ContinenteService {
         ContinenteEntity newContinente = continenteRepo.save(continente);
         ContinenteDTO result = continenteMapper.continenteEntity2DTO(newContinente);
         return result;
+    }
+
+    public List<ContinenteDTO> findAll() {
+//        List<ContinenteDTO> continentes = new ArrayList<>();
+        List<ContinenteEntity> entities = continenteRepo.findAll();
+        List<ContinenteDTO> dtos = continenteMapper.continenteEntityList2DTOList(entities);
+        return dtos;
+    }
+
+    public ContinenteDTO getDetailsById(Long id) {
+        Optional<ContinenteEntity> entity = continenteRepo.findById(id);
+        if (entity.isPresent()) {
+            ContinenteDTO dto = continenteMapper.continenteEntity2DTO(entity.get());
+            return dto;
+        }
+        return null;
+//        if (!entity.isPresent()) {
+//            throw new ParamNotFound(ErrorsEnum.IDCHARACTERNOTFOUND.getMessage());
+//        }
     }
 
 

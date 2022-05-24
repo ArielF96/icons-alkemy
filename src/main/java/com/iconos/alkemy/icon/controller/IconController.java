@@ -15,10 +15,18 @@ import java.util.Set;
 @RequestMapping("iconos")
 public class IconController {
 
+    @Autowired
     private IconService iconService;
 
-    @Autowired
-    public IconController(IconService iconService) {this.iconService = iconService;}
+//    @Autowired
+//    //public IconController iconController;
+//    public IconController(IconService iconService) {this.iconService = iconService;}
+
+    @PostMapping
+    public ResponseEntity<IconDTO> save(@RequestBody IconDTO icon) {
+        IconDTO result = this.iconService.save(icon);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
 
 //    @GetMapping("/all")
 //    public ResponseEntity<List<IconBasicDTO>> getAll() {
@@ -43,11 +51,7 @@ public class IconController {
 //        return ResponseEntity.ok(icons);
 //    }
 //
-//    @PostMapping
-//    public ResponseEntity<IconDTO> save(@RequestBody IconDTO icon) {
-//        IconDTO result = this.iconService.save(icon);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(result);
-//    }
+//
 //
 //    @PutMapping("/{id}")
 //    public ResponseEntity<IconDTO> update(@PathVariable Long id, @RequestBody IconDTO icon) {

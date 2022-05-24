@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "pais")
-@SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
+@SQLDelete(sql = "UPDATE pais SET deleted = true WHERE id=?" )
 @Where(clause = "deleted=false")
 public class PaisEntity {
 
@@ -34,6 +38,7 @@ public class PaisEntity {
     @JoinColumn(name = "continente_id", insertable = false, updatable = false)
     private ContinenteEntity continente;
 
+    @NotNull
     @Column(name = "continente_id", nullable = false)
     private Long continenteId;
 

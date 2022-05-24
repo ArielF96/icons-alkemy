@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "icon")
 @SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
 @Where(clause = "deleted=false")

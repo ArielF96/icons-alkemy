@@ -4,6 +4,10 @@ import com.iconos.alkemy.icon.dto.ContinenteDTO;
 import com.iconos.alkemy.icon.entity.ContinenteEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 @Component
 public class ContinenteMapper {
 
@@ -48,16 +52,16 @@ public class ContinenteMapper {
 
         /**
          * @param entities (Set or List)
-         * @param loadPaises
+//         * @param loadPaises
          */
 
-//    public List<IconDTO> iconEntitySet2DTOList(Collection<IconEntity> entities, boolean loadPaises) {
-//        List<IconDTO> dtos = new ArrayList<>();
-//        for (IconEntity entity : entities) {
-//            dtos.add(this.iconEntity2DTO(entity, loadPaises));
-//        }
-//        return dtos;
-//    }
+    public List<ContinenteDTO> continenteEntityList2DTOList(Collection<ContinenteEntity> entities) {
+        List<ContinenteDTO> dtos = new ArrayList<>();
+        for (ContinenteEntity entity : entities) {
+            dtos.add(this.continenteEntity2DTO(entity));
+        }
+        return dtos;
+    }
 //
 //    public List<IconBasicDTO> iconEntitySet2BasicDTOList(Collection<IconEntity entities>) {
 //        List<IconBasicDTO> dtos = new ArrayList<>();

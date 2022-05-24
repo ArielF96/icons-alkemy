@@ -23,17 +23,17 @@ public class ContinenteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(continenteGuardado);
     }
 
-    //    @GetMapping("/all")
-//    public ResponseEntity<List<ContinenteDTO>> getAll() {
-//        List<ContinenteDTO> continentes = this.continenteService.getAll();
-//        return ResponseEntity.ok(continentes);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<IconDTO> getDetailsById(@PathVariable Long id) {
-//        IconDTO icon = this.iconService.getDetailsById(id);
-//        return ResponseEntity.ok(icon);
-//    }
+    @GetMapping
+    public ResponseEntity<List<ContinenteDTO>> findAll() {
+        List<ContinenteDTO> continentes = this.continenteService.findAll();
+        return ResponseEntity.ok(continentes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ContinenteDTO> getDetailsById(@PathVariable Long id) {
+        ContinenteDTO continente = this.continenteService.getDetailsById(id);
+        return ResponseEntity.ok(continente);
+    }
 //
 //    @GetMapping
 //    public ResponseEntity<List<IconDTO>> getDetailsByFilters(
@@ -75,9 +75,6 @@ public class ContinenteController {
 //        this.iconService.removePais(id, idPais);
 //        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 //    }
-
-
-
 
 
 }
