@@ -1,17 +1,16 @@
-package com.iconos.alkemy.icon.Entity;
+package com.iconos.alkemy.icon.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
+@Data
 @Table(name = "pais")
-@Getter
-@Setter
 @SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
 @Where(clause = "deleted=false")
 public class PaisEntity {
@@ -47,7 +46,7 @@ public class PaisEntity {
             name = "icon_pais",
             joinColumns = @JoinColumn(name = "pais_id"),
             inverseJoinColumns = @JoinColumn(name = "icon_id"))
-    private Set<IconEntity> icons = new HashSet<>();
+    private List<IconEntity> icons = new ArrayList<>();
 
     @Override
     public boolean equals(Object obj) {

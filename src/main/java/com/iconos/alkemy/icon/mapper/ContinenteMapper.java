@@ -1,48 +1,26 @@
 package com.iconos.alkemy.icon.mapper;
 
-import com.iconos.alkemy.icon.entity.IconEntity;
-import com.iconos.alkemy.icon.dto.IconBasicDTO;
-import com.iconos.alkemy.icon.dto.IconDTO;
-import com.iconos.alkemy.icon.dto.PaisDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.iconos.alkemy.icon.dto.ContinenteDTO;
+import com.iconos.alkemy.icon.entity.ContinenteEntity;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-
 @Component
-public class IconMapper {
+public class ContinenteMapper {
 
-//    @Autowired
-//    private PaisMapper paisMapper;
+    public ContinenteEntity continenteDTO2Entity(ContinenteDTO dto) {
+        ContinenteEntity entity = new ContinenteEntity();
+        entity.setImagen(dto.getImagen());
+        entity.setDenominacion(dto.getDenominacion());
+        return entity;
+    }
 
-//    public IconEntity iconDTO2Entity(IconDTO dto) {
-//        IconEntity entity = new IconEntity();
-//        entity.setImagen(dto.getImagen());
-//        entity.setDenominacion(dto.getDenominacion());
-//        entity.setFechaCreacion(
-//                this.string2LocalDate(dto.getFechaCreacion())
-//        );
-//        entity.setAltura(dto.getAltura());
-//        entity.setHistoria(dto.getHistoria());
-//        return entity;
-//    }
-//
-//    public IconDTO iconEntity2DTO(IconEntity entity, boolean loadPaises) {
-//        IconDTO dto = new IconDTO();
-//        dto.setId((entity.getId()));
-//        dto.setImagen(entity.getImagen());
-//        dto.setDenominacion(entity.getDenominacion());
-//        dto.setFechaCreacion(entity.getFechaCreacion().toString());
-//        dto.setAltura(entity.getAltura());
-//        dto.setHistoria(entity.getHistoria());
-//        if (loadPaises) {
-//            List<PaisDTO> paisesDTO = this.paisMapper.paisEntityList2DTOList(entity.getPaises(), false);
-//            dto.setPaises(paisesDTO);
-//        }
-//        return dto;
-//    }
+    public ContinenteDTO continenteEntity2DTO(ContinenteEntity entity) {
+        ContinenteDTO dto = new ContinenteDTO();
+        dto.setId((entity.getId()));
+        dto.setImagen(entity.getImagen());
+        dto.setDenominacion(entity.getDenominacion());
+        return dto;
+    }
 //
 //    private LocalDate string2LocalDate(String stringDate) {
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -68,10 +46,10 @@ public class IconMapper {
 //        return entities;
 //    }
 
-    /**
-     * @param entities (Set or List)
-     * @param loadPaises
-     */
+        /**
+         * @param entities (Set or List)
+         * @param loadPaises
+         */
 
 //    public List<IconDTO> iconEntitySet2DTOList(Collection<IconEntity> entities, boolean loadPaises) {
 //        List<IconDTO> dtos = new ArrayList<>();
@@ -93,7 +71,4 @@ public class IconMapper {
 //        }
 //        return dtos;
 //    }
-
-
-
 }

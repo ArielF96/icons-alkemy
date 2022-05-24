@@ -1,10 +1,10 @@
 package com.iconos.alkemy.icon.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
+@Data
 public class IconBasicDTO {
     private Long id;
 
