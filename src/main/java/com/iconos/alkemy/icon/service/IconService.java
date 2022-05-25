@@ -1,11 +1,8 @@
 package com.iconos.alkemy.icon.service;
 
-import com.iconos.alkemy.icon.dto.ContinenteDTO;
 import com.iconos.alkemy.icon.dto.IconBasicDTO;
 import com.iconos.alkemy.icon.dto.IconDTO;
-import com.iconos.alkemy.icon.dto.PaisDTO;
 import com.iconos.alkemy.icon.entity.IconEntity;
-import com.iconos.alkemy.icon.entity.PaisEntity;
 import com.iconos.alkemy.icon.mapper.IconMapper;
 import com.iconos.alkemy.icon.repo.IconRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +37,15 @@ public class IconService {
         return dtos;
     }
 
+    public IconDTO getDetailsById(Long id) {
+        Optional<IconEntity> entity = iconRepo.findById(id);
+        if (entity.isPresent()) {
+            IconDTO dto = iconMapper.iconEntity2DTO(entity.get(), true);
+            return dto;
+        }
+        return null;
+    }
+
 //    public void addPais(Long id, Long idPais) {
 //        IconEntity entity = this.iconRepo.getById(id);
 //        entity.getPaises().size();
@@ -56,7 +62,7 @@ public class IconService {
     public void delete (Long id) {
         Optional<IconEntity> entity = iconRepo.findById(id);
         if (entity.isPresent()) {
-            iconRepo.delete(entity.get());
+            iconRepo.deleteById(id);
         }
     }
 

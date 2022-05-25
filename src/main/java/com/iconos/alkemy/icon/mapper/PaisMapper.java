@@ -51,10 +51,9 @@ public class PaisMapper {
         return dto;
     }
 //
-    public List<PaisDTO> paisEntityList2DTOList(Collection<PaisEntity> entities, boolean loadIcons) {
+    public List<PaisDTO> paisEntityList2DTOList(List<PaisEntity> entities, boolean loadIcons) {
         List<PaisDTO> dtos = new ArrayList<>();
         for (PaisEntity entity : entities) {
-            //TODO Change paisEntity2DTO?
             dtos.add(this.paisEntity2DTO(entity, loadIcons));
         }
         return dtos;

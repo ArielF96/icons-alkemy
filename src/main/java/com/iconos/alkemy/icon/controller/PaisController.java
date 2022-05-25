@@ -39,4 +39,11 @@ public class PaisController {
         this.paisService.addIcon(id, idIcon);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @DeleteMapping("/{id}/icon/{idIcon}")
+    public ResponseEntity<Void> removeIcon(@PathVariable Long id, @PathVariable Long idIcon) {
+        this.paisService.removeIcon(id, idIcon);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
 }

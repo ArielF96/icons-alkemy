@@ -54,6 +54,8 @@ public class PaisEntity {
 
     public void addIcon(IconEntity icon) {this.icons.add(icon); }
 
+    public void removeIcon(IconEntity icon) {this.icons.remove(icon); }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null)

@@ -1,8 +1,6 @@
 package com.iconos.alkemy.icon.service;
 
-import com.iconos.alkemy.icon.dto.ContinenteDTO;
 import com.iconos.alkemy.icon.dto.PaisDTO;
-import com.iconos.alkemy.icon.entity.ContinenteEntity;
 import com.iconos.alkemy.icon.entity.IconEntity;
 import com.iconos.alkemy.icon.entity.PaisEntity;
 import com.iconos.alkemy.icon.mapper.PaisMapper;
@@ -28,7 +26,7 @@ public class PaisService {
     public PaisDTO save(PaisDTO dto) {
         PaisEntity pais = paisMapper.paisDTO2Entity(dto);
         PaisEntity newPais = paisRepo.save(pais);
-        PaisDTO result = paisMapper.paisEntity2DTO(newPais, false);
+        PaisDTO result = paisMapper.paisEntity2DTO(newPais, true);
         return result;
     }
 
@@ -56,6 +54,13 @@ public class PaisService {
         //entity.getPaises().size();
         IconEntity iconEntity = this.iconService.getEntityById(idIcon);
         entity.addIcon(iconEntity);
+        this.paisRepo.save(entity);
+    }
+
+    public void removeIcon(Long id, Long idIcon) {
+        PaisEntity entity = this.paisRepo.getById(id);
+        IconEntity iconEntity = this.iconService.getEntityById(idIcon);
+        entity.removeIcon(iconEntity);
         this.paisRepo.save(entity);
     }
 

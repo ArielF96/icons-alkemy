@@ -33,12 +33,12 @@ public class IconController {
         List<IconBasicDTO> icons = this.iconService.findAll();
         return ResponseEntity.ok(icons);
     }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<IconDTO> getDetailsById(@PathVariable Long id) {
-//        IconDTO icon = this.iconService.getDetailsById(id);
-//        return ResponseEntity.ok(icon);
-//    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<IconDTO> getDetailsById(@PathVariable Long id) {
+        IconDTO icon = this.iconService.getDetailsById(id);
+        return ResponseEntity.ok(icon);
+    }
 //
 //    @GetMapping
 //    public ResponseEntity<List<IconDTO>> getDetailsByFilters(
