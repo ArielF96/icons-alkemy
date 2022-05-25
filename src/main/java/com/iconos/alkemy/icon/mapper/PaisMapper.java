@@ -45,7 +45,7 @@ public class PaisMapper {
         dto.setContinenteId(entity.getContinenteId());
         dto.setSuperficie(entity.getSuperficie());
         if (loadIcons) {
-            List<IconDTO> iconDTOS = this.iconMapper.iconEntitySet2DTOList(entity.getIcons(), false);
+            List<IconDTO> iconDTOS = this.iconMapper.iconEntityList2DTOList(entity.getIcons(), false);
             dto.setIcons(iconDTOS);
         }
         return dto;

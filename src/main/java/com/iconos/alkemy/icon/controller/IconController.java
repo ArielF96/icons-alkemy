@@ -28,11 +28,11 @@ public class IconController {
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
-//    @GetMapping("/all")
-//    public ResponseEntity<List<IconBasicDTO>> getAll() {
-//        List<IconBasicDTO> icons = this.iconService.getAll();
-//        return ResponseEntity.ok(icons);
-//    }
+    @GetMapping
+    public ResponseEntity<List<IconBasicDTO>> findAll() {
+        List<IconBasicDTO> icons = this.iconService.findAll();
+        return ResponseEntity.ok(icons);
+    }
 //
 //    @GetMapping("/{id}")
 //    public ResponseEntity<IconDTO> getDetailsById(@PathVariable Long id) {
@@ -59,11 +59,11 @@ public class IconController {
 //        return ResponseEntity.ok().body(result);
 //    }
 //
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<IconDTO> delete(@PathVariable Long id) {
-//        this.iconService.delete(id);
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<IconDTO> delete(@PathVariable Long id) {
+        this.iconService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 //
 //    @PostMapping("/{id}/pais/{idPais}")
 //    public ResponseEntity<Void> addPais(@PathVariable Long id, @PathVariable Long idPais) {

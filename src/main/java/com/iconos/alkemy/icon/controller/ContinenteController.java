@@ -58,11 +58,11 @@ public class ContinenteController {
 //        return ResponseEntity.ok().body(result);
 //    }
 //
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<IconDTO> delete(@PathVariable Long id) {
-//        this.iconService.delete(id);
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ContinenteDTO> delete(@PathVariable Long id) {
+        this.continenteService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 //
 //    @PostMapping("/{id}/pais/{idPais}")
 //    public ResponseEntity<Void> addPais(@PathVariable Long id, @PathVariable Long idPais) {

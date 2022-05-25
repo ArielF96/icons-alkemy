@@ -38,7 +38,6 @@ public class PaisEntity {
     @JoinColumn(name = "continente_id", insertable = false, updatable = false)
     private ContinenteEntity continente;
 
-    @NotNull
     @Column(name = "continente_id", nullable = false)
     private Long continenteId;
 
@@ -52,6 +51,8 @@ public class PaisEntity {
             joinColumns = @JoinColumn(name = "pais_id"),
             inverseJoinColumns = @JoinColumn(name = "icon_id"))
     private List<IconEntity> icons = new ArrayList<>();
+
+    public void addIcon(IconEntity icon) {this.icons.add(icon); }
 
     @Override
     public boolean equals(Object obj) {

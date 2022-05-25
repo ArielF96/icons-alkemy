@@ -71,7 +71,7 @@ public class IconMapper {
      * @param loadPaises
      */
 
-    public List<IconDTO> iconEntitySet2DTOList(Collection<IconEntity> entities, boolean loadPaises) {
+    public List<IconDTO> iconEntityList2DTOList(Collection<IconEntity> entities, boolean loadPaises) {
         List<IconDTO> dtos = new ArrayList<>();
         for (IconEntity entity : entities) {
             dtos.add(this.iconEntity2DTO(entity, loadPaises));
@@ -79,7 +79,7 @@ public class IconMapper {
         return dtos;
     }
 
-    public List<IconBasicDTO> iconEntitySet2BasicDTOList(Collection<IconEntity> entities) {
+    public List<IconBasicDTO> iconEntityList2BasicDTOList(Collection<IconEntity> entities) {
         List<IconBasicDTO> dtos = new ArrayList<>();
         IconBasicDTO basicDTO;
         for (IconEntity entity : entities) {

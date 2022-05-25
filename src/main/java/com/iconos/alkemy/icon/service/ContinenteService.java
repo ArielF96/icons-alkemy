@@ -2,6 +2,7 @@ package com.iconos.alkemy.icon.service;
 
 import com.iconos.alkemy.icon.dto.ContinenteDTO;
 import com.iconos.alkemy.icon.entity.ContinenteEntity;
+import com.iconos.alkemy.icon.entity.IconEntity;
 import com.iconos.alkemy.icon.mapper.ContinenteMapper;
 import com.iconos.alkemy.icon.repo.ContinenteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,12 @@ public class ContinenteService {
 //        }
     }
 
+
+    public void delete (Long id) {
+        Optional<ContinenteEntity> entity = continenteRepo.findById(id);
+        if (entity.isPresent()) {
+            continenteRepo.delete(entity.get());
+        }
+    }
 
 }
