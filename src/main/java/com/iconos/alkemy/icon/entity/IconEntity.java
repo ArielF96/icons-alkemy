@@ -11,17 +11,17 @@ import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name = "icons")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "icon")
 @SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id=?" )
 @Where(clause = "deleted=false")
 public class IconEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String imagen;
@@ -42,11 +42,11 @@ public class IconEntity {
 //    @JoinColumn(name = "pais_id")
 //    private PaisEntity pais;
 
-    @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "icons", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<PaisEntity> paises = new ArrayList<>();
 
     //Add and remove paises
-    public void addPais(PaisEntity pais) {this.paises.add(pais); }
-    public void removePais(PaisEntity pais) {this.paises.remove(pais); }
+//    public void addPais(PaisEntity pais) {this.paises.add(pais); }
+//    public void removePais(PaisEntity pais) {this.paises.remove(pais); }
 
 }

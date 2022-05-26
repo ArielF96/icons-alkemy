@@ -1,6 +1,5 @@
 package com.iconos.alkemy.icon.controller;
 
-import com.iconos.alkemy.icon.dto.ContinenteDTO;
 import com.iconos.alkemy.icon.dto.PaisDTO;
 import com.iconos.alkemy.icon.service.PaisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +28,19 @@ public class PaisController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<PaisDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         this.paisService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PostMapping("/{id}/icon/{idIcon}")
-    public ResponseEntity<Void> addIcon(@PathVariable Long id, @PathVariable Long idIcon) {
+    @PostMapping("/{id}/iconos/{idIcon}")
+    public ResponseEntity<PaisDTO> addIcon(@PathVariable Long id, @PathVariable Long idIcon) {
         this.paisService.addIcon(id, idIcon);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping("/{id}/icon/{idIcon}")
-    public ResponseEntity<Void> removeIcon(@PathVariable Long id, @PathVariable Long idIcon) {
+    @DeleteMapping("/{id}/iconos/{idIcon}")
+    public ResponseEntity<PaisDTO> removeIcon(@PathVariable Long id, @PathVariable Long idIcon) {
         this.paisService.removeIcon(id, idIcon);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

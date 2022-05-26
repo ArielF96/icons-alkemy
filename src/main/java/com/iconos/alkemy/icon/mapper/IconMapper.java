@@ -1,9 +1,9 @@
 package com.iconos.alkemy.icon.mapper;
 
+import com.iconos.alkemy.icon.dto.PaisBasicDTO;
 import com.iconos.alkemy.icon.entity.IconEntity;
 import com.iconos.alkemy.icon.dto.IconBasicDTO;
 import com.iconos.alkemy.icon.dto.IconDTO;
-import com.iconos.alkemy.icon.dto.PaisDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +36,7 @@ public class IconMapper {
         dto.setAltura(entity.getAltura());
         dto.setHistoria(entity.getHistoria());
         if (loadPaises) {
-            List<PaisDTO> paisesDTO = this.paisMapper.paisEntityList2DTOList(entity.getPaises(), false);
+            List<PaisBasicDTO> paisesDTO = this.paisMapper.paisEntityList2BasicDTOList(entity.getPaises());
             dto.setPaises(paisesDTO);
         }
         return dto;
@@ -58,20 +58,15 @@ public class IconMapper {
         entity.setHistoria(iconDTO.getHistoria());
     }
 
-    public Set<IconEntity> iconDTOList2Entity(List<IconDTO> dtos) {
-        Set<IconEntity> entities = new HashSet<>();
+    public List<IconEntity> iconDTOList2Entity(List<IconDTO> dtos) {
+        List<IconEntity> entities = new ArrayList<>();
         for (IconDTO dto : dtos) {
             entities.add(this.iconDTO2Entity(dto));
         }
         return entities;
     }
 
-    /**
-     * @param entities (Set or List)
-     * @param loadPaises
-     */
-
-    public List<IconDTO> iconEntityList2DTOList(Collection<IconEntity> entities, boolean loadPaises) {
+    public List<IconDTO> iconEntityList2DTOList(List<IconEntity> entities, boolean loadPaises) {
         List<IconDTO> dtos = new ArrayList<>();
         for (IconEntity entity : entities) {
             dtos.add(this.iconEntity2DTO(entity, loadPaises));
@@ -79,7 +74,7 @@ public class IconMapper {
         return dtos;
     }
 
-    public List<IconBasicDTO> iconEntityList2BasicDTOList(Collection<IconEntity> entities) {
+    public List<IconBasicDTO> iconEntityList2BasicDTOList(List<IconEntity> entities) {
         List<IconBasicDTO> dtos = new ArrayList<>();
         IconBasicDTO basicDTO;
         for (IconEntity entity : entities) {

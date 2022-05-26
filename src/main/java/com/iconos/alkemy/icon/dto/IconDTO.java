@@ -1,11 +1,13 @@
 package com.iconos.alkemy.icon.dto;
 
-import lombok.Data;
+import com.iconos.alkemy.icon.entity.PaisEntity;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class IconDTO {
 
     private Long id;
@@ -20,5 +22,5 @@ public class IconDTO {
 
     private String historia;
 
-    private List<PaisDTO> paises;
+    private List<PaisBasicDTO> paises;
 }

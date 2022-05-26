@@ -1,13 +1,12 @@
 package com.iconos.alkemy.icon.mapper;
 
-import com.iconos.alkemy.icon.dto.IconDTO;
+import com.iconos.alkemy.icon.dto.IconBasicDTO;
+import com.iconos.alkemy.icon.dto.PaisBasicDTO;
 import com.iconos.alkemy.icon.entity.PaisEntity;
 import com.iconos.alkemy.icon.dto.PaisDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Component
@@ -15,16 +14,6 @@ public class PaisMapper {
 
     @Autowired
     private IconMapper iconMapper;
-    //TODO missing code
-
-
-    /*entity.setCantidadHabitantes(dto.getCantidadHabitantes());
-    entity.setContinenteId(dto.getContinenteId());
-    entity.setSuperficie(dto.getSuperficie());
-    //icons
-    Set<IconEntity> icons = this.iconMapper.iconDTOList2Entity(dto.getIcons());
-    entity.setIcons(icons);
-    return entity;*/
 
     public PaisEntity paisDTO2Entity(PaisDTO dto) {
         PaisEntity entity = new PaisEntity();
@@ -45,7 +34,7 @@ public class PaisMapper {
         dto.setContinenteId(entity.getContinenteId());
         dto.setSuperficie(entity.getSuperficie());
         if (loadIcons) {
-            List<IconDTO> iconDTOS = this.iconMapper.iconEntityList2DTOList(entity.getIcons(), false);
+            List<IconBasicDTO> iconDTOS = this.iconMapper.iconEntityList2BasicDTOList(entity.getIcons());
             dto.setIcons(iconDTOS);
         }
         return dto;
@@ -65,6 +54,19 @@ public class PaisMapper {
             entities.add(this.paisDTO2Entity(dto));
         }
         return entities;
+    }
+
+    public List<PaisBasicDTO> paisEntityList2BasicDTOList(List<PaisEntity> entities) {
+        List<PaisBasicDTO> dtos = new ArrayList<>();
+        PaisBasicDTO basicDTO;
+        for (PaisEntity entity : entities) {
+            basicDTO = new PaisBasicDTO();
+            basicDTO.setId(entity.getId());
+            basicDTO.setImagen(entity.getImagen());
+            basicDTO.setDenominacion(entity.getDenominacion());
+            dtos.add(basicDTO);
+        }
+        return dtos;
     }
 
 }

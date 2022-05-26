@@ -62,7 +62,7 @@ public class IconService {
     public void delete (Long id) {
         Optional<IconEntity> entity = iconRepo.findById(id);
         if (entity.isPresent()) {
-            iconRepo.deleteById(id);
+            iconRepo.delete(entity.get());
         }
     }
 

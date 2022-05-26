@@ -2,20 +2,22 @@ package com.iconos.alkemy.icon.entity;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Data
 @Table(name = "continente")
-@SQLDelete(sql = "UPDATE continente SET deleted = true WHERE id=?" )
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@SQLDelete(sql = "UPDATE continente SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 public class ContinenteEntity {
 
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String imagen;

@@ -1,11 +1,12 @@
 package com.iconos.alkemy.icon.dto;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Getter
 @Setter
-public class ContinenteDTO {
+public class PaisBasicDTO {
+
     private Long id;
     private String imagen;
     private String denominacion;

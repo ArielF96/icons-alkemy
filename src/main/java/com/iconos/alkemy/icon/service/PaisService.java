@@ -1,6 +1,7 @@
 package com.iconos.alkemy.icon.service;
 
 import com.iconos.alkemy.icon.dto.PaisDTO;
+import com.iconos.alkemy.icon.entity.ContinenteEntity;
 import com.iconos.alkemy.icon.entity.IconEntity;
 import com.iconos.alkemy.icon.entity.PaisEntity;
 import com.iconos.alkemy.icon.mapper.PaisMapper;
@@ -45,7 +46,7 @@ public class PaisService {
     public void delete (Long id) {
         Optional<PaisEntity> entity = paisRepo.findById(id);
         if (entity.isPresent()) {
-            paisRepo.delete(entity.get());
+            paisRepo.deleteById(id);
         }
     }
 
@@ -64,4 +65,12 @@ public class PaisService {
         this.paisRepo.save(entity);
     }
 
+    public void buscarPorContinente(Long id) {
+        List<PaisEntity> entities = paisRepo.findAll();
+        for (PaisEntity entity : entities) {
+            if (entity.getContinenteId() == id) {
+                paisRepo.delete(entity);
+            }
+        }
+    }
 }
